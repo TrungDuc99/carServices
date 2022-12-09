@@ -2493,10 +2493,10 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/jest-native@^5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-5.1.2.tgz#aefabc666f0f18b1ef3c0daf5c58d7cb1ffe41ea"
-  integrity sha512-OPpt4wxn/+rgE4yIyQpiNpSEyE67ggXaom3iv4ly0HM1YhH9rH5eNg8b8N47CuQArJrsjwvvaKor7MqznVSzjw==
+"@testing-library/jest-native@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-5.3.1.tgz#a21fcf3d92b7f5a554a824c48594ea8a2133b428"
+  integrity sha512-ET8IJScwsOPtuChFbIKNH54jpTz2PDyo8Dg22QNCotyTdCurHS6wO9klgRYan5i/lS/jjNh3HfCxnpK6bIbNiw==
   dependencies:
     chalk "^4.1.2"
     jest-diff "^29.0.1"
