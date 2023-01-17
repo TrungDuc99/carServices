@@ -4,6 +4,7 @@ import type { TouchableOpacityProps } from 'react-native';
 import { ActivityIndicator } from './activity-indicator';
 import { Text } from './text';
 import { TouchableOpacity } from './touchable-opacity';
+import { View } from './view';
 
 type Variant = {
   container: string;
@@ -20,10 +21,10 @@ export const buttonVariants: BVariant = {
     container:
       'flex-row items-center justify-center rounded-full px-12 py-3 my-2',
     label: 'text-[16px] font-medium text-white',
-    indicator: 'text-white h-[30px]',
+    indicator: 'text-white ',
   },
   primary: {
-    container: 'bg-black',
+    container: 'bg-primary-700',
     label: '',
     indicator: 'text-white',
   },
@@ -33,9 +34,9 @@ export const buttonVariants: BVariant = {
     indicator: 'text-white',
   },
   outline: {
-    container: 'border border-neutral-400',
-    label: 'text-black',
-    indicator: 'text-black',
+    container: 'border border-neutral_extra-900',
+    label: 'text-neutral_extra-900',
+    indicator: 'text-neutral_extra-900',
   },
 };
 
@@ -43,18 +44,36 @@ interface Props extends TouchableOpacityProps {
   variant?: VariantName;
   label?: string;
   loading?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  iconLeft?: {
+    name: any;
+    color?: string;
+    size?: number;
+  };
+  iconRight?: {
+    name: any;
+    color?: string;
+    size?: number;
+  };
 }
-
 export const Button = ({
   label,
+  iconLeft,
+  iconRight,
+  size = 'medium',
   loading = false,
   variant = 'primary',
   disabled = false,
   ...props
 }: Props) => {
+  const IconLeft = iconLeft?.name;
+  const IconRight = iconRight?.name;
   return (
     <TouchableOpacity
       disabled={disabled || loading}
+      style={{
+        height: size === 'small' ? 50 : size === 'large' ? 60 : 55,
+      }}
       className={`
     ${buttonVariants.defaults.container}
      ${buttonVariants[variant].container}
@@ -71,14 +90,23 @@ export const Button = ({
           `}
         />
       ) : (
-        <Text
-          className={`
+        <View className="flex-row">
+          {IconLeft && (
+            <IconLeft color={iconLeft.color ? iconLeft.color : 'white'} />
+          )}
+          <Text
+            className={`mx-2
           ${buttonVariants.defaults.label}
            ${buttonVariants[variant].label}
           `}
-        >
-          {label}
-        </Text>
+          >
+            {label}
+          </Text>
+
+          {IconRight && (
+            <IconRight color={iconRight.color ? iconRight.color : 'white'} />
+          )}
+        </View>
       )}
     </TouchableOpacity>
   );

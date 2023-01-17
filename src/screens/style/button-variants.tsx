@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Button, buttonVariants, View } from '@/ui';
-
 import { Title } from './title';
-
+import { ArrowLeft2, ArrowRight2 } from 'iconsax-react-native';
 type variant = keyof typeof buttonVariants;
 
 export const ButtonVariants = () => {
@@ -22,7 +21,14 @@ export const ButtonVariants = () => {
               />
             );
           })}
-        <Button label="Button" loading={true} variant="primary" />
+        <Button
+          label="Button"
+          loading={false}
+          variant="primary"
+          iconLeft={{ name: ArrowRight2 }}
+          iconRight={{ name: ArrowLeft2 }}
+          onPress={async () => {}}
+        />
         <Button label="Button" loading={true} variant="outline" />
         <Button label="PRIMARY BUTTON DISABLED" disabled variant="primary" />
         <Button

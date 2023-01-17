@@ -17,7 +17,7 @@ export const InputVariants = () => {
     <>
       <Title text="Form" />
       <View>
-        <Input label="Default" placeholder="Lorem ipsum dolor sit amet" />
+        <Input placeholder="Số điện thoại" />
         <Input label="Error" error="This is a message error" />
         <Input label="Focused" />
         <Select

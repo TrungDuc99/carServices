@@ -33,5 +33,19 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   web: {
     favicon: './assets/favicon.png',
   },
-  plugins: [['@bacons/link-assets', ['./assets/fonts/Inter.ttf']]],
+  plugins: [
+    [
+      '@bacons/link-assets',
+      [
+        './assets/fonts/Inter.ttf',
+        './assets/fonts/Manrope-Bold.ttf',
+        './assets/fonts/Manrope-ExtraBold.ttf',
+        './assets/fonts/Manrope-ExtraLight.ttf',
+        './assets/fonts/Manrope-Light.ttf',
+        './assets/fonts/Manrope-Medium.ttf',
+        './assets/fonts/Manrope-Regular.ttf',
+        './assets/fonts/Manrope-SemiBold.ttf',
+      ],
+    ],
+  ],
 });

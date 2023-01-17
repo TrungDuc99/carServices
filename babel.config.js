@@ -9,6 +9,7 @@ module.exports = function (api) {
           root: ['./'],
           alias: {
             '@': './src',
+            '@assets': './src/assets',
             '@config': './config',
           },
           extensions: [

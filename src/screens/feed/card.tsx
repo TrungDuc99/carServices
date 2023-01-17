@@ -2,7 +2,7 @@ import React from 'react';
 
 import type { Post } from '@/api';
 import { Image, Pressable, Text, View } from '@/ui';
-
+import { StyleSheet } from 'react-native';
 type Props = Post & { onPress?: () => void };
 
 export const Card = ({ title, body, onPress = () => {} }: Props) => {
@@ -29,3 +29,15 @@ export const Card = ({ title, body, onPress = () => {} }: Props) => {
     </Pressable>
   );
 };
+export const styles = StyleSheet.create({
+  card: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 16,
+  },
+});
