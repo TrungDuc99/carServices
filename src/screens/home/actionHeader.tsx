@@ -1,15 +1,12 @@
-import { useAuth } from '../../core';
-import React from 'react';
 import { Text, TouchableOpacity, View } from '@/ui';
-import { Image } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Divider from '@/ui/core/drivider';
 import {
   DollarSquare,
   SearchNormal,
   TicketStar,
   Wallet3,
 } from 'iconsax-react-native';
+import React from 'react';
+import { useAuth } from '../../core';
 
 export const ActionHeader = () => {
   const { signIn } = useAuth();

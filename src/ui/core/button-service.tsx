@@ -10,9 +10,10 @@ import colors from '../theme/colors';
 import { View } from './view';
 interface ButtonServiceProps extends IconProps {
   item: ButtonAction;
+  onPress: () => void;
 }
 const ButtonService = (props: ButtonServiceProps) => {
-  const { item } = props;
+  const { item, onPress } = props;
 
   const widthItem = WIDTH / 3 - ScaleSize(30);
   const styles = StyleSheet.create({
@@ -26,7 +27,11 @@ const ButtonService = (props: ButtonServiceProps) => {
     },
   });
   return (
-    <Card onPress={() => console.log('pressed')}>
+    <Card
+      onPress={() => {
+        onPress && onPress();
+      }}
+    >
       <View style={styles.cardContainer} className=" p-5 ">
         <ServiceIcon color={colors.primary[700]} />
       </View>

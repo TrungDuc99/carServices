@@ -1,9 +1,8 @@
-import { useAuth } from '../../core';
-import React from 'react';
 import { Text, View } from '@/ui';
-import { Image } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Divider from '@/ui/core/drivider';
+import React from 'react';
+import { Image } from 'react-native';
+import { useAuth } from '../../core';
 
 export const HeaderUserInfo = () => {
   const { signIn } = useAuth();

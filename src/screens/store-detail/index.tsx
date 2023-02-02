@@ -2,17 +2,16 @@ import { ScaleSize, Spacing } from '@/configs';
 import { IVoucher } from '@/models';
 import { Button, getColor, Text, TouchableOpacity, View } from '@/ui';
 import BackTopBar from '@/ui/core/back-top-bar';
+import Divider from '@/ui/core/drivider';
 import Space from '@/ui/core/space';
-import WrapperContainer from '@/ui/core/wrapper-backbtn';
+import UserAvatar from '@/ui/core/user-avatar';
+import { useNavigation } from '@react-navigation/native';
 import { Location, VideoTick } from 'iconsax-react-native';
 import * as React from 'react';
-import { StyleSheet, Image, ScrollView } from 'react-native';
-import { Card, Carousel, Spacings } from 'react-native-ui-lib';
+import { Image, ScrollView, StyleSheet } from 'react-native';
+import { Card, Carousel } from 'react-native-ui-lib';
 import RecommendVouchers from '../home/recommendVouchers';
 import MoreCountInfo from './more-count-info';
-import { Rating, AirbnbRating } from 'react-native-ratings';
-import UserAvatar from '@/ui/core/user-avatar';
-import Divider from '@/ui/core/drivider';
 interface StoreDetailProps {}
 const vouchers: IVoucher[] = [
   {
@@ -72,6 +71,8 @@ const vouchers: IVoucher[] = [
 ];
 
 const StoreDetail = (props: StoreDetailProps) => {
+  const { navigate } = useNavigation();
+
   return (
     <View className="flex-1  bg-white">
       <BackTopBar title="Chi tiết cửa hàng" />
@@ -80,7 +81,6 @@ const StoreDetail = (props: StoreDetailProps) => {
           <Card
             style={{
               padding: 10,
-
               marginTop: Spacing(2),
             }}
             borderRadius={12}
@@ -93,7 +93,7 @@ const StoreDetail = (props: StoreDetailProps) => {
               pagingEnabled
               animated
               loop
-              onChangePage={() => console.log('page changed')}
+              // onChangePage={() => console.log('page changed')}
             >
               {vouchers.map((item) => {
                 return (
@@ -120,7 +120,13 @@ const StoreDetail = (props: StoreDetailProps) => {
             <MoreCountInfo />
           </Card>
           <Space value={2} />
-          <Button size="small" label="ĐẶT LỊCH" />
+          <Button
+            size="small"
+            label="ĐẶT LỊCH"
+            onPress={() => {
+              navigate('Booking');
+            }}
+          />
           <Space value={4} />
           <Card>
             <View className="p-3 ">

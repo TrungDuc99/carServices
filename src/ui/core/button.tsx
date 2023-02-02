@@ -9,6 +9,7 @@ import { View } from './view';
 type Variant = {
   container: string;
   label: string;
+
   indicator: string;
 };
 type VariantName = 'defaults' | 'primary' | 'outline' | 'secondary';
@@ -18,8 +19,7 @@ type BVariant = {
 
 export const buttonVariants: BVariant = {
   defaults: {
-    container:
-      'flex-row items-center justify-center rounded-full px-12 py-3 my-2',
+    container: 'flex-row items-center justify-center  px-12 py-3 my-2',
     label: 'text-[16px] font-medium text-white',
     indicator: 'text-white ',
   },
@@ -44,6 +44,7 @@ interface Props extends TouchableOpacityProps {
   variant?: VariantName;
   label?: string;
   loading?: boolean;
+  borderRadius?: 'medium' | 'full';
   size?: 'small' | 'medium' | 'large';
   iconLeft?: {
     name: any;
@@ -61,6 +62,7 @@ export const Button = ({
   iconLeft,
   iconRight,
   size = 'medium',
+  borderRadius = 'full',
   loading = false,
   variant = 'primary',
   disabled = false,
@@ -74,7 +76,7 @@ export const Button = ({
       style={{
         height: size === 'small' ? 50 : size === 'large' ? 60 : 55,
       }}
-      className={`
+      className={`${borderRadius === 'medium' ? 'rounded-lg' : 'rounded-full'}
     ${buttonVariants.defaults.container}
      ${buttonVariants[variant].container}
      ${disabled ? 'opacity-50' : ''}

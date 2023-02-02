@@ -12,9 +12,10 @@ import CheckboxField from '@/ui/core/check-box';
 import { FontFamily } from '@/configs';
 import { TouchableOpacity } from '@gorhom/bottom-sheet';
 import Divider from '@/ui/core/drivider';
+import { useNavigation } from '@react-navigation/native';
 const schema = z.object({
   phoneNumber: z.string({
-    required_error: 'Email is required',
+    required_error: 'Number is required',
   }),
 
   password: z
@@ -33,6 +34,8 @@ type Props = {
 export const LoginForm = ({ onSubmit = () => {} }: Props) => {
   const [isCheck, setIsCheck] = useState<boolean>(false);
   const [isShowPw, setIsShowPw] = useState<boolean>(true);
+  const { navigate } = useNavigation();
+
   const { handleSubmit, control } = useForm<FormType>({
     resolver: zodResolver(schema),
   });
@@ -97,8 +100,10 @@ export const LoginForm = ({ onSubmit = () => {} }: Props) => {
         <TouchableOpacity>
           <Text>Quen mật khẩu</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity>
+        <View style={{ height: 12, marginHorizontal: 5, marginBottom: 2 }}>
+          <Divider orientation="vertical" spacing={4} color="dark" />
+        </View>
+        <TouchableOpacity onPress={() => navigate('Register')}>
           <Text>Đăng ký</Text>
         </TouchableOpacity>
       </View>

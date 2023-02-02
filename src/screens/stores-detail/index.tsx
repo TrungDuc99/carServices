@@ -1,19 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
-
 import React from 'react';
-
-import type { Post } from '@/api';
+import { useNavigation } from '@react-navigation/native';
 import { usePosts } from '@/api';
-import { ControlledInput, EmptyList, Input, View } from '@/ui';
-
-import BackTopBar from '@/ui/core/back-top-bar';
+import { ControlledInput, EmptyList, View } from '@/ui';
+import { Colors, Spacing } from '@/configs';
 import { IVoucher } from '@/models';
-import { GaraCard } from './card';
-import { FlatList } from 'react-native';
-import { Colors, ScaleSize, Spacing } from '@/configs';
+import BackTopBar from '@/ui/core/back-top-bar';
+import { Filter, SearchNormal } from 'iconsax-react-native';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Call, Filter, SearchNormal } from 'iconsax-react-native';
+import { FlatList } from 'react-native';
+import { GaraCard } from './card';
 
 export const StoresDetail = () => {
   const { data, isLoading } = usePosts();
@@ -91,12 +86,7 @@ export const StoresDetail = () => {
 
   return (
     <View className="flex-1  bg-white">
-      <BackTopBar
-        title="Danh sách cửa hàng"
-        pressBack={() => {
-          navigate('Home');
-        }}
-      />
+      <BackTopBar title="Danh sách cửa hàng" />
       <View className="pr-5 pl-5 pt-1">
         <ControlledInput
           testID="phoneNumber-input"

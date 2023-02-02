@@ -1,12 +1,9 @@
 import { IVoucher } from '@/models';
-import { Screen, View, WIDTH } from '@/ui';
-import ButtonService from '@/ui/core/button-service';
-import VoucherCard from '@/ui/core/card-voucher';
-import VoucherCardColumn from '@/ui/core/card-voucher-column';
+import { View, WIDTH } from '@/ui';
 import Divider from '@/ui/core/drivider';
+import { ScrollViewScreen } from '@/ui/scrollViewScreen';
 import { ProfileTick } from 'iconsax-react-native';
 import React from 'react';
-import { FlatList, ScrollView } from 'react-native';
 import { useAuth } from '../../core';
 import { ActionHeader } from './actionHeader';
 import BannerVoucher from './bannerVoucher';
@@ -17,6 +14,8 @@ import ServiceButtonList, { ButtonAction } from './serviceButtonList';
 import StoreList from './StoreList';
 export const Home = () => {
   const { signIn } = useAuth();
+  const [refreshing, setRefreshing] = React.useState(false);
+
   const vouchers: IVoucher[] = [
     {
       id: '1',
@@ -112,12 +111,19 @@ export const Home = () => {
     if (nativeEvent && nativeEvent.contentOffset) {
       const currentOffset = nativeEvent.contentOffset.x;
       let imageIndex = 0;
-      console.log('SCREEN WIDTH: ', WIDTH, '--- OFFSET: ', currentOffset);
+      // console.log('SCREEN WIDTH: ', WIDTH, '--- OFFSET: ', currentOffset);
     }
   };
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
-    <ScrollView showsVerticalScrollIndicator style={{ display: 'flex' }}>
+    <ScrollViewScreen onRefresh={onRefresh} refreshing={refreshing}>
       <View className="px-5">
         <HeaderUserInfo />
         <Divider spacing={3} orientation="horizontal" color="bland" />
@@ -134,6 +140,6 @@ export const Home = () => {
         <StoreList title="Danh sách cửa hàng" data={vouchers} />
         <EndowList title="Ưu đãi" data={vouchers} />
       </View>
-    </ScrollView>
+    </ScrollViewScreen>
   );
 };

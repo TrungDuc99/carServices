@@ -31,17 +31,17 @@ export const Root = () => {
         animation: 'none',
       }}
     >
-      {isFirstTime ? (
+      {/* {isFirstTime ? (
         <Stack.Screen name="Onboarding" component={Onboarding} />
-      ) : (
-        <Stack.Group>
-          {status === 'signOut' ? (
-            <Stack.Screen name="Auth" component={AuthNavigator} />
-          ) : (
-            <Stack.Screen name="App" component={TabNavigator} />
-          )}
-        </Stack.Group>
-      )}
+      ) : ( */}
+      <Stack.Group>
+        {status === 'signOut' ? (
+          <Stack.Screen name="Auth" component={AuthNavigator} />
+        ) : (
+          <Stack.Screen name="App" component={TabNavigator} />
+        )}
+      </Stack.Group>
+      {/* )} */}
     </Stack.Navigator>
   );
 };

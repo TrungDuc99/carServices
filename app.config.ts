@@ -20,7 +20,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ['**/*'],
   ios: {
-    supportsTablet: true,
+    // supportsTablet: true,
     bundleIdentifier: Config.scheme,
   },
   android: {

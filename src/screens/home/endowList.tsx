@@ -1,9 +1,6 @@
 import { ScaleSize } from '@/configs';
-import scaleSize from '@/configs/scale';
 import { IVoucher } from '@/models';
 import { Text, TouchableOpacity, View, WIDTH } from '@/ui';
-import VoucherCard from '@/ui/core/card-voucher';
-import VoucherCardColumn from '@/ui/core/card-voucher-column';
 import * as React from 'react';
 import { FlatList, Image, StyleSheet } from 'react-native';
 

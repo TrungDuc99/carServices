@@ -1,6 +1,5 @@
 import { IVoucher } from '@/models';
-import { Text, TouchableOpacity, View, WIDTH } from '@/ui';
-import VoucherCard from '@/ui/core/card-voucher';
+import { Text, TouchableOpacity, View } from '@/ui';
 import VoucherCardColumn from '@/ui/core/card-voucher-column';
 import * as React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
@@ -20,7 +19,7 @@ const RecommendVouchers = (props: BannerVoucherProps) => {
     if (nativeEvent && nativeEvent.contentOffset) {
       const currentOffset = nativeEvent.contentOffset.x;
       let imageIndex = 0;
-      console.log('SCREEN WIDTH: ', WIDTH, '--- OFFSET: ', currentOffset);
+      // console.log('SCREEN WIDTH: ', WIDTH, '--- OFFSET: ', currentOffset);
     }
   };
   return (

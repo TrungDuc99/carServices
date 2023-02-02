@@ -7,11 +7,17 @@ import { Pressable, Text } from '@/ui';
 import { Home } from '@/screens/home';
 import { StoresDetail } from '@/screens/stores-detail';
 import StoreDetail from '@/screens/store-detail';
+import { Payment } from '@/screens/payment';
+import { Booking } from '@/screens/booking';
+import { BookingSuccess } from '@/screens/booking/bookingSuccess';
 
 export type HomeStackParamList = {
   Home: undefined;
   StoresDetail: { id: number };
   StoreDetail: undefined;
+  Payment: undefined;
+  Booking: undefined;
+  BookingSuccess: undefined;
 };
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
@@ -42,6 +48,22 @@ export const HomeNavigator = () => {
         options={{ headerShown: false }}
         name="StoreDetail"
         component={StoreDetail}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Payment"
+        component={Payment}
+      />
+
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Booking"
+        component={Booking}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="BookingSuccess"
+        component={BookingSuccess}
       />
     </Stack.Navigator>
   );

@@ -1,8 +1,6 @@
 import { IVoucher } from '@/models';
 import { Text, TouchableOpacity, View, WIDTH } from '@/ui';
 import StoreCard from '@/ui/core/card-store';
-import VoucherCard from '@/ui/core/card-voucher';
-import VoucherCardColumn from '@/ui/core/card-voucher-column';
 import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
@@ -24,7 +22,7 @@ const StoreList = (props: StoreListProps) => {
     if (nativeEvent && nativeEvent.contentOffset) {
       const currentOffset = nativeEvent.contentOffset.x;
       let imageIndex = 0;
-      console.log('SCREEN WIDTH: ', WIDTH, '--- OFFSET: ', currentOffset);
+      // console.log('SCREEN WIDTH: ', WIDTH, '--- OFFSET: ', currentOffset);
     }
   };
 

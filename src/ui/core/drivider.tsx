@@ -35,10 +35,10 @@ const Divider = (props: DividerProps) => {
         {
           backgroundColor:
             color === 'bland'
-              ? '#e3e3e3'
+              ? '#f0f0f0'
               : color === 'dark'
               ? '#acacac'
-              : '#c2c2c2',
+              : '#e3e3e3',
         },
       ]}
     ></View>

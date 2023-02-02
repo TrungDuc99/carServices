@@ -1,8 +1,8 @@
 import { Text, View } from '@/ui';
 import ButtonService from '@/ui/core/button-service';
+import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { GridList } from 'react-native-ui-lib';
 
 export type ButtonAction = {
   id: string;
@@ -16,11 +16,17 @@ interface ServiceButtonListProps {
 }
 
 const ServiceButtonList = (props: ServiceButtonListProps) => {
+  const { navigate } = useNavigation();
   const { data, title } = props;
   const Item = ({ item }: any, index: number) => {
     return (
       <View className="p-2" key={item.id}>
-        <ButtonService item={item} />
+        <ButtonService
+          item={item}
+          onPress={() => {
+            navigate('Payment');
+          }}
+        />
         <Text variant="sm" className="mt-1 text-center font-medium">
           {item.label}
         </Text>

@@ -11,6 +11,8 @@ import colors from '../../theme/colors';
 import { Text } from '../text';
 import { View } from '../view';
 import { TouchableOpacity } from '../touchable-opacity';
+import { Button } from '../button';
+import { ActivityIndicator } from '../activity-indicator';
 
 const STextInput = styled(NTextInput);
 
@@ -19,7 +21,8 @@ export interface NInputProps extends TextInputProps {
   disabled?: boolean;
   error?: string;
   size?: 'small' | 'medium' | 'large';
-
+  labelButtonRight?: string;
+  onPressButtonRight?: () => void;
   iconLeft?: {
     name: any;
     color?: string;
@@ -41,6 +44,8 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
     error,
     iconLeft,
     iconRight,
+    labelButtonRight,
+    onPressButtonRight,
     size = 'medium',
     ...inputProps
   } = props;
@@ -89,7 +94,9 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
               }
             : {},
         ]}
-        className={`flex-row w-full px-4 rounded-2xl ${backgroundColorInput} items-center justify-center content-center ${borderColor} ${textDirection} `}
+        className={`flex-row w-full ${
+          labelButtonRight ? 'pl-4 pr-2' : 'px-4'
+        } rounded-2xl ${backgroundColorInput} items-center justify-center content-center ${borderColor} ${textDirection} `}
       >
         {IconLeft && (
           <TouchableOpacity
@@ -128,8 +135,25 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
             { writingDirection: isRTL ? 'rtl' : 'ltr' },
           ])}
         />
+        {labelButtonRight && (
+          <TouchableOpacity
+            onPress={onPressButtonRight}
+            className={`flex-row p-2 rounded-lg items-center justify-center  bg-primary-700
+         `}
+          >
+            {false ? (
+              <ActivityIndicator />
+            ) : (
+              <View className="flex-row">
+                <Text className="text-[12px] font-semibold text-white">
+                  {labelButtonRight}
+                </Text>
+              </View>
+            )}
+          </TouchableOpacity>
+        )}
 
-        {IconRight && (
+        {IconRight && !labelButtonRight && (
           <TouchableOpacity onPress={iconRight.onPress && iconRight.onPress}>
             <IconRight
               color={
