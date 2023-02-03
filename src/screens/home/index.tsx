@@ -124,18 +124,18 @@ export const Home = () => {
 
   return (
     <ScrollViewScreen onRefresh={onRefresh} refreshing={refreshing}>
-      <View className="px-5">
+      <View className="px-3">
         <HeaderUserInfo />
         <Divider spacing={3} orientation="horizontal" color="bland" />
         <ActionHeader />
       </View>
-      <View className="pl-5  pr-1">
+      <View className="pl-3  pr-1">
         <BannerVoucher title="Danh sách lịch hẹn" data={vouchers} />
       </View>
-      <View className="px-5  pr-1">
+      <View className="px-3 pr-1">
         <ServiceButtonList data={buttons} title="Danh sách dịch vụ" />
       </View>
-      <View className="pl-5 pr-1">
+      <View className="pl-3 pr-1">
         <RecommendVouchers title="Gợi ý cho bạn" data={vouchers} />
         <StoreList title="Danh sách cửa hàng" data={vouchers} />
         <EndowList title="Ưu đãi" data={vouchers} />

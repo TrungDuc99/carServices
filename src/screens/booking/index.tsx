@@ -48,7 +48,7 @@ export const Booking = () => {
         <Button
           label="TIẾP TỤC"
           onPress={() => {
-            navigate('BookingSuccess');
+            navigate('GetVoucher');
           }}
           iconLeft={{
             name: Login,

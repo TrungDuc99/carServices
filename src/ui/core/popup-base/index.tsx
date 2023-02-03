@@ -7,24 +7,12 @@ import { BlurView } from '@react-native-community/blur';
 import { TouchableOpacity } from '../touchable-opacity';
 import { Colors, ScaleSize, Spacing } from '@/configs';
 import { Button } from '../button';
-export type ArlertPopupProps = {
+export type BasePopupProps = {
   visible: boolean;
-  title?: string;
-  message?: string;
-  type: 'success' | 'warning' | 'error';
-  submit?: () => void;
   onCancel?: () => void;
   content?: any;
 };
-const ArlertPopup = ({
-  visible,
-  content,
-  message,
-  type,
-  title,
-  onCancel,
-  submit,
-}: ArlertPopupProps) => {
+const BasePopup = ({ visible, content, onCancel }: BasePopupProps) => {
   return (
     <Modal
       animationType="fade"
@@ -37,7 +25,7 @@ const ArlertPopup = ({
     >
       <BlurView
         style={styles.absolute}
-        blurType="extraDark"
+        blurType="light"
         blurAmount={1}
         reducedTransparencyFallbackColor="white"
       />
@@ -77,78 +65,7 @@ const ArlertPopup = ({
               <CloseCircle variant="Bulk" color="#DA202C" size={35} />
             </TouchableOpacity>
           </View>
-          {/* {type === 'success' ? (
-            <View
-              centerH
-              centerV
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 1000,
-                backgroundColor: '#12B996',
-              }}
-            >
-              <ShieldTick color="#ffff" size={40} />
-            </View>
-          ) : type === 'error' ? (
-            <View
-              centerH
-              centerV
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 1000,
-                backgroundColor: 'red',
-              }}
-            >
-              <ShieldCross color="#ffff" size={40} />
-            </View>
-          ) : (
-            <View
-              centerH
-              centerV
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 1000,
-                backgroundColor: Colors.successColor,
-              }}
-            >
-              <ShieldCross color="#ffff" size={40} />
-            </View>
-          )} */}
-          <Text
-            style={[
-              styles.modalText,
-              {
-                color:
-                  type === 'success'
-                    ? Colors.successColor
-                    : type === 'warning'
-                    ? Colors.warnColor
-                    : Colors.errorColor,
-              },
-            ]}
-          >
-            {title}
-          </Text>
-          {/* <Pressable
-            style={[styles.button, styles.buttonClose]}
-            onPress={() => {
-              onPress && onPress();
-            }}
-          >
-            <Text style={styles.textStyle}>Chup</Text>
-          </Pressable> */}
           <View style={styles.content}>{content && content}</View>
-          <View style={{ width: '80%', marginBottom: 12 }}>
-            <Button
-              onPress={() => {
-                submit && submit();
-              }}
-              label="Chụp lại"
-            />
-          </View>
         </View>
       </View>
     </Modal>
@@ -161,6 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+    backgroundColor: 'rgba(0,0,0,0.2)',
   },
   modalView: {
     margin: 20,
@@ -214,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ArlertPopup;
+export default BasePopup;

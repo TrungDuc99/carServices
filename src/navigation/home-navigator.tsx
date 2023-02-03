@@ -10,6 +10,7 @@ import StoreDetail from '@/screens/store-detail';
 import { Payment } from '@/screens/payment';
 import { Booking } from '@/screens/booking';
 import { BookingSuccess } from '@/screens/booking/bookingSuccess';
+import { GetVoucher } from '@/screens/getVoucher';
 
 export type HomeStackParamList = {
   Home: undefined;
@@ -18,6 +19,7 @@ export type HomeStackParamList = {
   Payment: undefined;
   Booking: undefined;
   BookingSuccess: undefined;
+  GetVoucher: undefined;
 };
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
@@ -64,6 +66,11 @@ export const HomeNavigator = () => {
         options={{ headerShown: false }}
         name="BookingSuccess"
         component={BookingSuccess}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="GetVoucher"
+        component={GetVoucher}
       />
     </Stack.Navigator>
   );

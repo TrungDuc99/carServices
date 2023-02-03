@@ -28,11 +28,11 @@ export const HeaderUserInfo = () => {
           style={{
             width: 35,
             height: 35,
-            marginHorizontal: 10,
+            marginHorizontal: 2,
           }}
           source={require('@/assets/images/ellipse.png')}
         />
-        <View>
+        <View className="ml-2">
           <Text variant="xs" style={{ color: '#555' }}>
             Chào buổi sáng
           </Text>

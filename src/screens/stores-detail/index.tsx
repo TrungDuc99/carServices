@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { usePosts } from '@/api';
-import { ControlledInput, EmptyList, View } from '@/ui';
+import { ControlledInput, ControlledSelectBase, EmptyList, View } from '@/ui';
 import { Colors, Spacing } from '@/configs';
 import { IVoucher } from '@/models';
 import BackTopBar from '@/ui/core/back-top-bar';
@@ -9,10 +9,13 @@ import { Filter, SearchNormal } from 'iconsax-react-native';
 import { useForm } from 'react-hook-form';
 import { FlatList } from 'react-native';
 import { GaraCard } from './card';
+import BasePopup from '@/ui/core/popup-base';
 
 export const StoresDetail = () => {
   const { data, isLoading } = usePosts();
   const { navigate } = useNavigation();
+  const [isShow, setIsShow] = useState(false);
+
   const vouchers: IVoucher[] = [
     {
       id: '1',
@@ -91,7 +94,12 @@ export const StoresDetail = () => {
         <ControlledInput
           testID="phoneNumber-input"
           control={control}
-          iconLeft={{ custom: true, name: Filter, color: 'white' }}
+          iconLeft={{
+            custom: true,
+            name: Filter,
+            color: 'white',
+            onPress: () => setIsShow(!isShow),
+          }}
           iconRight={{
             name: SearchNormal,
             color: Colors.primaryColor,
@@ -112,6 +120,27 @@ export const StoresDetail = () => {
         renderItem={renderItem}
         keyExtractor={(_, index) => `item-${index}`}
         ListEmptyComponent={<EmptyList isLoading={false} />}
+      />
+      <BasePopup
+        visible={isShow}
+        onCancel={() => setIsShow(false)}
+        content={
+          <View className="flex ">
+            <View style={{ width: '100%' }}>
+              <ControlledSelectBase
+                control={control}
+                name="tinhThanhPho"
+                label="Tinh thành phố"
+                options={[
+                  { label: 'TP Hồ Chí Minhasdwwwr', value: 1 },
+                  { label: 'TP Hồ Chí Minhasd', value: 2 },
+                  { label: 'TP Hồ Chí Minasdh', value: 3 },
+                  { label: 'TP Hồ Chí Minhasd', value: 4 },
+                ]}
+              />
+            </View>
+          </View>
+        }
       />
     </View>
   );

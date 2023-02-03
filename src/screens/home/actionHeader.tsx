@@ -1,5 +1,7 @@
-import { Text, TouchableOpacity, View } from '@/ui';
+import { ControlledSelectBase, Text, TouchableOpacity, View } from '@/ui';
 import ArlertPopup from '@/ui/core/popup-arlert';
+import BasePopup from '@/ui/core/popup-base';
+
 import {
   DollarSquare,
   SearchNormal,
@@ -7,23 +9,15 @@ import {
   Wallet3,
 } from 'iconsax-react-native';
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useAuth } from '../../core';
 
 export const ActionHeader = () => {
   const { signIn } = useAuth();
-  const [isShow, setIsShow] = useState(false);
+
   return (
     <View className="flex-row   justify-between">
-      <ArlertPopup
-        visible={isShow}
-        onCancel={() => setIsShow(false)}
-        title="ASASAS"
-        type="success"
-      />
       <TouchableOpacity
-        onPress={() => {
-          setIsShow(!isShow);
-        }}
         style={{ alignItems: 'center', justifyContent: 'center' }}
         className="px-4 rounded-full bg-primary-300"
       >
@@ -40,13 +34,13 @@ export const ActionHeader = () => {
       </TouchableOpacity>
       <View className="flex-row ">
         <TouchableOpacity className="p-2 mr-2 rounded-full bg-primary-300">
-          <Wallet3 color="#256CFE" />
+          <Wallet3 variant="Bulk" color="#256CFE" />
         </TouchableOpacity>
         <TouchableOpacity className="p-2  mr-2  rounded-full bg-primary-300">
-          <SearchNormal color="#256CFE" />
+          <SearchNormal variant="Bulk" color="#256CFE" />
         </TouchableOpacity>
         <TouchableOpacity className="p-2  rounded-full bg-primary-300">
-          <TicketStar color="#256CFE" />
+          <TicketStar variant="Bulk" color="#256CFE" />
         </TouchableOpacity>
       </View>
     </View>

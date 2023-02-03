@@ -20,7 +20,7 @@ const ServiceButtonList = (props: ServiceButtonListProps) => {
   const { data, title } = props;
   const Item = ({ item }: any, index: number) => {
     return (
-      <View className="p-2" key={item.id}>
+      <View className="p-3" key={item.id}>
         <ButtonService
           item={item}
           onPress={() => {
