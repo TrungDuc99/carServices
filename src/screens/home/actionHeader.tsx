@@ -1,19 +1,29 @@
 import { Text, TouchableOpacity, View } from '@/ui';
+import ArlertPopup from '@/ui/core/popup-arlert';
 import {
   DollarSquare,
   SearchNormal,
   TicketStar,
   Wallet3,
 } from 'iconsax-react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../core';
 
 export const ActionHeader = () => {
   const { signIn } = useAuth();
-
+  const [isShow, setIsShow] = useState(false);
   return (
     <View className="flex-row   justify-between">
+      <ArlertPopup
+        visible={isShow}
+        onCancel={() => setIsShow(false)}
+        title="ASASAS"
+        type="success"
+      />
       <TouchableOpacity
+        onPress={() => {
+          setIsShow(!isShow);
+        }}
         style={{ alignItems: 'center', justifyContent: 'center' }}
         className="px-4 rounded-full bg-primary-300"
       >
