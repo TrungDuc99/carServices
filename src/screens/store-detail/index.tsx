@@ -1,9 +1,12 @@
 import { ScaleSize, Spacing } from '@/configs';
 import { IVoucher } from '@/models';
+import TopTabsNavigatorInfoDetail from '@/navigation/TopTabsNavigatorInfoDetail';
+import TopTabsNavigatorCInfoDetail from '@/navigation/TopTabsNavigatorInfoDetail';
 import { Button, getColor, Text, TouchableOpacity, View } from '@/ui';
 import BackTopBar from '@/ui/core/back-top-bar';
 import Divider from '@/ui/core/drivider';
 import Space from '@/ui/core/space';
+
 import UserAvatar from '@/ui/core/user-avatar';
 import { useNavigation } from '@react-navigation/native';
 import { Location, VideoTick } from 'iconsax-react-native';
@@ -127,6 +130,7 @@ const StoreDetail = (props: StoreDetailProps) => {
               navigate('Booking');
             }}
           />
+
           <Space value={4} />
           <Card>
             <View className="p-3 ">
